@@ -10,6 +10,7 @@ public class BuildingPlacer : MonoBehaviour
     [Header("Settings")]
     public float heightOffset = 0f;
     public float rotationSpeed = 90f;
+    public int buildingCost = 100;
 
     private GameObject activePreview;
     private Camera mainCamera;
@@ -37,6 +38,12 @@ public class BuildingPlacer : MonoBehaviour
 
     void StartPlacement()
     {
+        if (GameManager.Instance != null && GameManager.Instance.townCurrency < buildingCost)
+        {
+            Debug.Log("Not enough coins!");
+            return;
+        }
+
         activePreview = Instantiate(buildingPrefab);
         currentRotation = 0f;
 
@@ -75,6 +82,13 @@ public class BuildingPlacer : MonoBehaviour
 
     void ConfirmPlacement()
     {
+        if (GameManager.Instance != null)
+        {
+            if (GameManager.Instance.townCurrency < buildingCost) return;
+            GameManager.Instance.townCurrency -= buildingCost;
+            Debug.Log("Resterende coins: " + GameManager.Instance.townCurrency);
+        }
+
         Collider[] colliders = activePreview.GetComponentsInChildren<Collider>();
         foreach (Collider col in colliders)
         {
