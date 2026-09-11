@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
     {
         if (coinText != null)
         {
-            coinText.text = "Coins: " + townCurrency;
+            coinText.text = townCurrency.ToString();
         }
     }
 }

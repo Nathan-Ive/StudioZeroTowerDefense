@@ -4,14 +4,18 @@ using UnityEngine.InputSystem;
 public class BuildingPlacer : MonoBehaviour
 {
     [Header("Setup")]
-    public GameObject buildingPrefab;
     public LayerMask groundLayer;
 
     [Header("Settings")]
     public float heightOffset = 0f;
     public float rotationSpeed = 90f;
-    public int buildingCost = 100;
 
+    [Header("Buildings")]
+    public GameObject mainBuildingPrefab;
+    public int mainBuildingCost = 100;
+
+    private GameObject buildingPrefab;
+    private int buildingCost;
     private GameObject activePreview;
     private Camera mainCamera;
     private float currentRotation = 0f;
@@ -19,7 +23,6 @@ public class BuildingPlacer : MonoBehaviour
     void Start()
     {
         mainCamera = Camera.main;
-        StartPlacement();
     }
 
     void Update()
@@ -36,8 +39,28 @@ public class BuildingPlacer : MonoBehaviour
         }
     }
 
+    // Deze functie kun je nu direct kiezen in de UI knop!
+    public void SelectMainBuilding()
+    {
+        SelectBuilding(mainBuildingPrefab, mainBuildingCost);
+    }
+
+    public void SelectBuilding(GameObject prefab, int cost)
+    {
+        if (activePreview != null)
+        {
+            Destroy(activePreview);
+        }
+
+        buildingPrefab = prefab;
+        buildingCost = cost;
+        StartPlacement();
+    }
+
     void StartPlacement()
     {
+        if (buildingPrefab == null) return;
+
         if (GameManager.Instance != null && GameManager.Instance.townCurrency < buildingCost)
         {
             Debug.Log("Not enough coins!");
@@ -86,7 +109,6 @@ public class BuildingPlacer : MonoBehaviour
         {
             if (GameManager.Instance.townCurrency < buildingCost) return;
             GameManager.Instance.townCurrency -= buildingCost;
-            Debug.Log("Resterende coins: " + GameManager.Instance.townCurrency);
         }
 
         Collider[] colliders = activePreview.GetComponentsInChildren<Collider>();
