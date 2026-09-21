@@ -1,10 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
-<<<<<<< Updated upstream
 --- !u!1001 &3310669603377107743
-=======
---- !u!1001 &6635256640078457042
->>>>>>> Stashed changes
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -12,7 +8,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-<<<<<<< Updated upstream
     - target: {fileID: -8679921383154817045, guid: 433b7637d378d374d881ba32609b27dd, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.5
@@ -69,73 +64,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: arrow
       objectReference: {fileID: 0}
-=======
-    - target: {fileID: -8679921383154817045, guid: 887f0d5043880ba47833cbd987778300, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 887f0d5043880ba47833cbd987778300, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 887f0d5043880ba47833cbd987778300, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 887f0d5043880ba47833cbd987778300, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -58.04095
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 887f0d5043880ba47833cbd987778300, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.361
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 887f0d5043880ba47833cbd987778300, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 59.691
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 887f0d5043880ba47833cbd987778300, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071067
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 887f0d5043880ba47833cbd987778300, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 887f0d5043880ba47833cbd987778300, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 887f0d5043880ba47833cbd987778300, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 887f0d5043880ba47833cbd987778300, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 887f0d5043880ba47833cbd987778300, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 887f0d5043880ba47833cbd987778300, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: 887f0d5043880ba47833cbd987778300, type: 3}
-      propertyPath: m_Name
-      value: arrow
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: 887f0d5043880ba47833cbd987778300, type: 3}
-      propertyPath: m_TagString
-      value: Bullet
-      objectReference: {fileID: 0}
->>>>>>> Stashed changes
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-<<<<<<< Updated upstream
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 433b7637d378d374d881ba32609b27dd, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6871866119183341398}
@@ -188,34 +120,12 @@ BoxCollider:
   m_Size: {x: 0.26869547, y: 2.1303585, z: 0.26869544}
   m_Center: {x: 0, y: -0.1964964, z: 0}
 --- !u!54 &6924300786500171794
-=======
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 887f0d5043880ba47833cbd987778300, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1797415065721233774}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 887f0d5043880ba47833cbd987778300, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1666991410610609406}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 887f0d5043880ba47833cbd987778300, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 931566474438124199}
-  m_SourcePrefab: {fileID: 100100000, guid: 887f0d5043880ba47833cbd987778300, type: 3}
---- !u!1 &5824353970023339395 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 887f0d5043880ba47833cbd987778300, type: 3}
-  m_PrefabInstance: {fileID: 6635256640078457042}
-  m_PrefabAsset: {fileID: 0}
---- !u!54 &1797415065721233774
->>>>>>> Stashed changes
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< Updated upstream
   m_GameObject: {fileID: 2391611132238687822}
-=======
-  m_GameObject: {fileID: 5824353970023339395}
->>>>>>> Stashed changes
   serializedVersion: 4
   m_Mass: 1
   m_Drag: 0
@@ -236,42 +146,3 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
-<<<<<<< Updated upstream
-=======
---- !u!65 &1666991410610609406
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5824353970023339395}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.26869547, y: 2.1303585, z: 0.26869544}
-  m_Center: {x: 0, y: -0.1964964, z: 0}
---- !u!114 &931566474438124199
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5824353970023339395}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f4212a301b0871419896c8e8c5a2767, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damageAmount: 100
-  useTagFilter: 1
-  targetTag: Enemy
->>>>>>> Stashed changes
