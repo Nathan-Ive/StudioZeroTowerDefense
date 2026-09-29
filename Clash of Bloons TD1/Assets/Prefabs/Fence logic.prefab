@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1750751792221161221
+--- !u!1 &2470052341288585412
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,50 +8,47 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1180298430044587325}
-  - component: {fileID: 7788248797703362860}
-  - component: {fileID: 1953060527169667008}
-  - component: {fileID: 7332684649412753915}
-  - component: {fileID: 7796175965295624197}
-  - component: {fileID: 8916195645103174943}
-  - component: {fileID: -8083172706160370376}
+  - component: {fileID: 4967961228889592567}
+  - component: {fileID: 586198080785291044}
+  - component: {fileID: 4355813202879098708}
+  - component: {fileID: 3850191280513679660}
   m_Layer: 0
-  m_Name: enemy
-  m_TagString: Enemy
+  m_Name: fence
+  m_TagString: Fence
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1180298430044587325
+--- !u!4 &4967961228889592567
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1750751792221161221}
+  m_GameObject: {fileID: 2470052341288585412}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -46.945328, y: 2.65, z: 55.009586}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.88, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 2791605843722127625}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &7788248797703362860
+--- !u!33 &586198080785291044
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1750751792221161221}
-  m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &1953060527169667008
+  m_GameObject: {fileID: 2470052341288585412}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &4355813202879098708
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1750751792221161221}
+  m_GameObject: {fileID: 2470052341288585412}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -90,13 +87,13 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &7332684649412753915
-CapsuleCollider:
+--- !u!65 &3850191280513679660
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1750751792221161221}
+  m_GameObject: {fileID: 2470052341288585412}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -108,58 +105,52 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7796175965295624197
+--- !u!1 &8522127865174465897
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2791605843722127625}
+  - component: {fileID: 4076038989202057331}
+  m_Layer: 0
+  m_Name: Fence logic
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2791605843722127625
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8522127865174465897}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -60.46, y: 1, z: 60.29137}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 4967961228889592567}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4076038989202057331
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1750751792221161221}
+  m_GameObject: {fileID: 8522127865174465897}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9808e03af31c4814a99dc22b31b298dd, type: 3}
+  m_Script: {fileID: 11500000, guid: 299c81e4fbd741942be9db17a33a935b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waypoints:
-  - {fileID: 8948243860327896974, guid: 435244bb0f41c854f95e3c80b75643eb, type: 3}
-  - {fileID: 1957169728277010861, guid: e2dc785a260f49747936b9aff44bdb18, type: 3}
-  - {fileID: 8986686598040720563, guid: 731aa3986931fad4f883cb3991c01ce3, type: 3}
-  - {fileID: 6872948749137628522, guid: ef8a0b892015b7c488e32b5b295c06a3, type: 3}
-  - {fileID: 4518150453247727674, guid: dbad02958f10f6540add3209cefb9ac8, type: 3}
-  - {fileID: 8538942645937248130, guid: eddabf841fc55ed4d8310ca3b75f1063, type: 3}
-  speed: 5
-  rotationSpeed: 5
---- !u!114 &8916195645103174943
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1750751792221161221}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce64a13a31bbb324bb42f12c52c288c2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 100
-  enableRegen: 1
-  regenRate: 5
-  testDamageAmount: 10
---- !u!114 &-8083172706160370376
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1750751792221161221}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 65b521437f2cf1c4383ccd97e3054e60, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damageAmount: 1
+  maxHealth: 15

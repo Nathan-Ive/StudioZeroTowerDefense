@@ -19,11 +19,9 @@ public class EnemyMovement : MonoBehaviour
     {
         if (hasReachedEnd || waypoints.Length == 0) return;
 
-        // Veiligheidscheck: bestaat het waypoint nog?
         Transform targetWaypoint = waypoints[currentWaypointIndex];
         if (targetWaypoint == null)
         {
-            Debug.LogWarning("Waypoint " + currentWaypointIndex + " is vernietigd of mist!", this);
             hasReachedEnd = true;
             return;
         }
@@ -36,7 +34,6 @@ public class EnemyMovement : MonoBehaviour
             Quaternion lookRotation = Quaternion.LookRotation(direction);
             transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, rotationSpeed * Time.deltaTime);
         }
-
         if (Vector3.Distance(transform.position, targetWaypoint.position) < 0.1f)
         {
             if (currentWaypointIndex >= waypoints.Length - 1)
@@ -44,7 +41,8 @@ public class EnemyMovement : MonoBehaviour
                 hasReachedEnd = true;
                 if (damageScript != null)
                 {
-                    damageScript.ReachedEnd(targetWaypoint.gameObject);
+                    GameObject fenceObject = GameObject.FindWithTag("Fence");
+                    damageScript.ReachedEnd(fenceObject);
                 }
             }
             else
