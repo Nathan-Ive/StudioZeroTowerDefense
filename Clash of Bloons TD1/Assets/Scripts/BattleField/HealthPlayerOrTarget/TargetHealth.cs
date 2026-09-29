@@ -5,9 +5,12 @@ public class TargetHealth : MonoBehaviour
     public int maxHealth = 3;
     private int currentHealth;
 
+    private GameScreenManager gameManager;
+
     void Start()
     {
         currentHealth = maxHealth;
+        gameManager = FindObjectOfType<GameScreenManager>();
     }
 
     public void TakeDamage(int amount)
@@ -15,7 +18,16 @@ public class TargetHealth : MonoBehaviour
         currentHealth -= amount;
         if (currentHealth <= 0)
         {
-            Destroy(gameObject);
+            Die();
         }
+    }
+
+    void Die()
+    {
+        if (gameManager != null)
+        {
+            gameManager.TriggerGameOver();
+        }
+        Destroy(gameObject);
     }
 }
