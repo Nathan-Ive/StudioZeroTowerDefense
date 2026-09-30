@@ -1,17 +1,40 @@
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+public class AmmoLogic : MonoBehaviour
 {
+    private Transform target;
+    [Header("Movement")]
+    public float speed = 20f;
     [Header("Damage")]
-    [Tooltip("damageAmount")]
     public float damageAmount = 10f;
-
-    [Header("tag filter")]
-    [Tooltip("If it needs to do damage based on the other tag X it here.")]
+    [Header("Tag Filter")]
     public bool useTagFilter = false;
-
-    [Tooltip("the damage it needs to do.")]
     public string targetTag = "Enemy";
+    public void Seek(Transform _target)
+    {
+        target = _target;
+    }
+
+    private void Update()
+    {
+        if (target == null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Vector3 dir = target.position - transform.position;
+        float distanceThisFrame = speed * Time.deltaTime;
+
+        if (dir.magnitude <= distanceThisFrame)
+        {
+            CheckAndDealDamage(target.gameObject);
+            return;
+        }
+
+        transform.Translate(dir.normalized * distanceThisFrame, Space.World);
+        transform.LookAt(target);
+    }
     private void OnCollisionEnter(Collision collision)
     {
         CheckAndDealDamage(collision.gameObject);
@@ -20,7 +43,6 @@ public class Bullet : MonoBehaviour
     {
         CheckAndDealDamage(other.gameObject);
     }
-
     private void CheckAndDealDamage(GameObject hitObject)
     {
         bool shouldDealDamage = false;
@@ -46,17 +68,14 @@ public class Bullet : MonoBehaviour
             {
                 healthScript.TakeDamage(damageAmount);
             }
-            else
-            {
-               
-            }
+
             Destroy(gameObject);
         }
         else
         {
             if (!hitObject.CompareTag("Bullet") && !hitObject.CompareTag("Player"))
             {
-              Destroy(gameObject);
+                Destroy(gameObject);
             }
         }
     }
