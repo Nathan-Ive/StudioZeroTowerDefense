@@ -15,6 +15,9 @@ public class WaveSpawner : MonoBehaviour
     public Wave[] waves;
     public Transform spawnPoint;
 
+    [Header("Waypoints")]
+    public Transform[] waypoints;
+
     private int nextWaveIndex = 0;
     private float timeBetweenWaves = 5f;
     private float countdown;
@@ -29,6 +32,7 @@ public class WaveSpawner : MonoBehaviour
     {
         if (waveIsSpawning)
             return;
+
         if (countdown <= 0f)
         {
             StartCoroutine(SpawnWave());
@@ -39,6 +43,7 @@ public class WaveSpawner : MonoBehaviour
             countdown -= Time.deltaTime;
         }
     }
+
     IEnumerator SpawnWave()
     {
         waveIsSpawning = true;
@@ -62,6 +67,11 @@ public class WaveSpawner : MonoBehaviour
 
     void SpawnEnemy(GameObject enemy)
     {
-        Instantiate(enemy, spawnPoint.position, spawnPoint.rotation);
+        GameObject newEnemy = Instantiate(enemy, spawnPoint.position, spawnPoint.rotation);
+        EnemyMovement movement = newEnemy.GetComponent<EnemyMovement>();
+        if (movement != null)
+        {
+            movement.waypoints = waypoints;
+        }
     }
 }
