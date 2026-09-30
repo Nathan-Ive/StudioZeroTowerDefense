@@ -148,13 +148,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67cf82213b21fe042a9f8457abdc03a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buildingPrefab: {fileID: 4223377326429882839, guid: 8249d7203fe709844abccb26cc7994b7, type: 3}
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
   heightOffset: 0
   rotationSpeed: 90
-  mainBuildingPrefab: {fileID: 919132149155446097, guid: 6f50172dc61efef498b0cf796697bc5e, type: 3}
+  mainBuildingPrefab: {fileID: 4223377326429882839, guid: 8249d7203fe709844abccb26cc7994b7, type: 3}
   mainBuildingCost: 100
 --- !u!4 &210721189
 Transform:

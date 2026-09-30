@@ -5,6 +5,7 @@ public class GameScreenManager : MonoBehaviour
 {
     [Header("UI Panelen")]
     public GameObject menuUI;
+    public AudioClip buttonSound;
 
     private bool isGameStopped = false;
 
@@ -54,13 +55,22 @@ public class GameScreenManager : MonoBehaviour
     }
     public void RestartScene()
     {
+        PlaySound();
         Time.timeScale = 1f;
         Scene currentScene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(currentScene.name);
     }
     public void LoadScene(string sceneName)
     {
+        PlaySound();
         Time.timeScale = 1f;
         SceneManager.LoadScene(sceneName);
+    }
+    private void PlaySound()
+    {
+        if (buttonSound != null)
+        {
+            AudioSource.PlayClipAtPoint(buttonSound, Camera.main.transform.position);
+        }
     }
 }
