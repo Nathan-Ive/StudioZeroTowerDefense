@@ -1,7 +1,11 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
+
+    public static readonly List<EnemyMovement> ActiveEnemies = new List<EnemyMovement>();
+
     [Header("Waypoint Instellingen")]
     public Transform[] waypoints;
     public float speed = 5f;
@@ -9,6 +13,16 @@ public class EnemyMovement : MonoBehaviour
     private int currentWaypointIndex = 0;
     private bool hasReachedEnd = false;
     private EnemyDamageScript damageScript;
+
+    void OnEnable()
+    {
+        ActiveEnemies.Add(this);
+    }
+
+    void OnDisable()
+    {
+        ActiveEnemies.Remove(this);
+    }
 
     void Start()
     {
