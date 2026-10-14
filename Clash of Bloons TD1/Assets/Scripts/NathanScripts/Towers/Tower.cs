@@ -8,7 +8,10 @@ using UnityEngine.InputSystem;
 ///   Attack an enemy (spawn a projectile)
 ///   Shoot from a chosen point on the tower's body (firePoint) and turn to face the target
 ///   Flying towards the target. This change was made in projectile.
+///   Bullet disappearing when it reaches its target. This change was made in projectile.
 ///
+/// 
+/// 
 /// It is "abstract", so you can never put a plain Tower in the scene: every tower must be a
 /// specific type, like SoldierTower. A child class changes behaviour by overriding a "virtual"
 /// method, usually Attack().
