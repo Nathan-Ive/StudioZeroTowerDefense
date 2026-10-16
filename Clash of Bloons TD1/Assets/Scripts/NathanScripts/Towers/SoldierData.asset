@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: SoldierData
   m_EditorClassIdentifier: 
   towerName: Soldier
-  damage: 5
+  damage: 75
+  attackCooldown: 1

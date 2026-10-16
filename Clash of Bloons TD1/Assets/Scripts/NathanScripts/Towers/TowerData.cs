@@ -23,4 +23,8 @@ public class TowerData : ScriptableObject
     [Header("Base combat stats")]
     [Tooltip("Damage of one hit, before any Baker bonus.")]
     public float damage = 5f;
+
+
+    [Tooltip("Seconds between attacks.")]
+    public float attackCooldown = 2f;
 }

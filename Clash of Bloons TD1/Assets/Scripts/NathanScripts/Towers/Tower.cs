@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 /// <summary>
 /// The base class every tower inherits from. It holds everything towers have in common.
@@ -10,8 +9,7 @@ using UnityEngine.InputSystem;
 ///   Flying towards the target. This change was made in projectile.
 ///   Bullet disappearing when it reaches its target. This change was made in projectile.
 ///
-/// 
-/// 
+///
 /// It is "abstract", so you can never put a plain Tower in the scene: every tower must be a
 /// specific type, like SoldierTower. A child class changes behaviour by overriding a "virtual"
 /// method, usually Attack().
@@ -37,6 +35,9 @@ public abstract class Tower : MonoBehaviour
     [SerializeField] protected Projectile projectilePrefab;
 
     protected EnemyMovement currentTarget;
+
+
+    private float cooldownTimer;     // seconds until the next attack is allowed
 
     // ---------------------------------------------------------------------------------
     // Read-only information for other scripts.
@@ -72,7 +73,11 @@ public abstract class Tower : MonoBehaviour
 
     protected virtual void Update()
     {
-        // Pick a target when we don't have one (or it was destroyed).
+        if (cooldownTimer > 0f)
+        {
+            cooldownTimer -= Time.deltaTime;
+        }
+
         if (currentTarget == null)
         {
             currentTarget = FindBestTarget();
@@ -83,13 +88,12 @@ public abstract class Tower : MonoBehaviour
             return;
         }
 
-
         RotateTowards(currentTarget);
 
-        // TEMPORARY
-        if (Keyboard.current != null && Keyboard.current.spaceKey.wasPressedThisFrame)
+        if (cooldownTimer <= 0f)
         {
             Attack(currentTarget);
+            cooldownTimer = data.attackCooldown;
         }
     }
 
@@ -102,7 +106,7 @@ public abstract class Tower : MonoBehaviour
     /// </summary>
     protected EnemyMovement FindBestTarget()
     {
-        // EnemyMovement keeps a list of every living enemy, so we never have to search the whole scene.
+        // EnemyMovement keeps a list of every living enemy.
         foreach (EnemyMovement enemy in EnemyMovement.ActiveEnemies)
         {
             if (enemy != null)
