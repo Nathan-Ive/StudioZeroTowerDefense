@@ -1,14 +1,20 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
 /// The base class every tower inherits from. It holds everything towers have in common.
 ///
 /// What it does so far:
-///   Attack an enemy (spawn a projectile)
-///   Shoot from a chosen point on the tower's body (firePoint) and turn to face the target
+///   Attack an enemy (spawn a projectile).
+///   Shoot from a chosen point on the tower's body (firePoint) and turn to face the target.
 ///   Flying towards the target. This change was made in projectile.
 ///   Bullet disappearing when it reaches its target. This change was made in projectile.
+///   Cooldown and automatic shooting.
+///   Only shoot targets within range.
+///   Target Priority (Closest, First, Last).
 ///
+///
+/// 
 ///
 /// It is "abstract", so you can never put a plain Tower in the scene: every tower must be a
 /// specific type, like SoldierTower. A child class changes behaviour by overriding a "virtual"
@@ -30,20 +36,31 @@ public abstract class Tower : MonoBehaviour
     [Tooltip("How quickly the rotating part turns towards its target.")]
     [SerializeField] protected float turnSpeed = 10f;
 
+    [Header("Range")]
+    [Tooltip("The child sphere with the TowerRange component. Found automatically if left empty.")]
+    [SerializeField] protected TowerRange range;
+
     [Header("Projectile")]
     [Tooltip("Prefab with the Projectile component that this tower shoots.")]
     [SerializeField] protected Projectile projectilePrefab;
 
+    [Header("Targeting")]
+    [Tooltip("Which enemy to attack when several are in range. You can change it in the Inspector during Play.")]
+    [SerializeField] protected TargetPriority priority = TargetPriority.First;
+
     protected EnemyMovement currentTarget;
 
-
     private float cooldownTimer;     // seconds until the next attack is allowed
+    
+    private float retargetTimer;     // seconds until the tower re-checks which enemy is the best target
+    private const float RetargetInterval = 0.2f;
 
     // ---------------------------------------------------------------------------------
     // Read-only information for other scripts.
     // ---------------------------------------------------------------------------------
 
     public TowerData Data { get { return data; } }
+    public TargetPriority Priority { get { return priority; } }
 
     /// <summary>Damage of one hit, from TowerData. Every projectile this tower fires uses it.</summary>
     public float Damage
@@ -64,11 +81,26 @@ public abstract class Tower : MonoBehaviour
             return;
         }
 
+        if (range == null)
+        {
+            range = GetComponentInChildren<TowerRange>();
+        }
+        if (range == null)
+        {
+            Debug.LogError(name + " has no child with a TowerRange component, so it is switched off.", this);
+            enabled = false;
+            return;
+        }
 
         if (firePoint == null)
         {
             firePoint = transform;
         }
+    }
+
+    protected virtual void Start()
+    {
+        ShowRange(false);
     }
 
     protected virtual void Update()
@@ -78,8 +110,10 @@ public abstract class Tower : MonoBehaviour
             cooldownTimer -= Time.deltaTime;
         }
 
-        if (currentTarget == null)
+        retargetTimer -= Time.deltaTime;
+        if (retargetTimer <= 0f || !IsValidTarget(currentTarget))
         {
+            retargetTimer = RetargetInterval;
             currentTarget = FindBestTarget();
         }
 
@@ -97,24 +131,97 @@ public abstract class Tower : MonoBehaviour
         }
     }
 
+    /// <summary>Show or hide the range sphere. Hidden does not turn the range off.</summary>
+    public void ShowRange(bool visible)
+    {
+        if (range != null)
+        {
+            range.SetVisible(visible);
+        }
+    }
+
     // ---------------------------------------------------------------------------------
     // Targeting
     // ---------------------------------------------------------------------------------
 
-    /// <summary>
-    /// The enemy to attack. For now that is simply the first living enemy, wherever it is.
-    /// </summary>
+    /// <summary>Go to the next priority: First, then Last, then Closest, then back to First.</summary>
+    public void CyclePriority()
+    {
+        if (priority == TargetPriority.First)
+        {
+            priority = TargetPriority.Last;
+        }
+        else if (priority == TargetPriority.Last)
+        {
+            priority = TargetPriority.Closest;
+        }
+        else
+        {
+            priority = TargetPriority.First;
+        }
+
+        retargetTimer = 0f; // pick a new target on the next frame
+    }
+
+    /// <summary>A target is valid while it still exists and stands inside the range.</summary>
+    protected bool IsValidTarget(EnemyMovement enemy)
+    {
+        // "enemy != null" is also false for an enemy that was destroyed (Unity handles that for us).
+        return enemy != null && range.Contains(enemy.transform.position);
+    }
+
+    /// <summary>The best enemy in range according to the priority, or null if none.</summary>
     protected EnemyMovement FindBestTarget()
     {
-        // EnemyMovement keeps a list of every living enemy.
+        List<EnemyMovement> enemies = GetEnemiesInRange();
+        if (enemies.Count == 0)
+        {
+            return null;
+        }
+        return enemies[0];
+    }
+
+    /// <summary>Every enemy inside the range, sorted with the best target first.</summary>
+    protected List<EnemyMovement> GetEnemiesInRange()
+    {
+        List<EnemyMovement> inRange = new List<EnemyMovement>();
+
+        // EnemyMovement keeps a list of every living enemy, so we never have to search the whole scene.
         foreach (EnemyMovement enemy in EnemyMovement.ActiveEnemies)
         {
-            if (enemy != null)
+            if (enemy != null && range.Contains(enemy.transform.position))
             {
-                return enemy;
+                inRange.Add(enemy);
             }
         }
-        return null;
+
+        SortByPriority(inRange);
+        return inRange;
+    }
+
+    private void SortByPriority(List<EnemyMovement> enemies)
+    {
+        // Sort takes a comparison: a negative result puts "a" before "b".
+        if (priority == TargetPriority.First)
+        {
+            // Least distance left to walk = closest to the end = first in the list.
+            enemies.Sort((a, b) => a.DistanceToEnd.CompareTo(b.DistanceToEnd));
+        }
+        else if (priority == TargetPriority.Last)
+        {
+            // Most distance left to walk first.
+            enemies.Sort((a, b) => b.DistanceToEnd.CompareTo(a.DistanceToEnd));
+        }
+        else
+        {
+            // Closest to this tower first.
+            enemies.Sort((a, b) => DistanceTo(a).CompareTo(DistanceTo(b)));
+        }
+    }
+
+    private float DistanceTo(EnemyMovement enemy)
+    {
+        return Vector3.Distance(transform.position, enemy.transform.position);
     }
 
     // ---------------------------------------------------------------------------------
@@ -163,7 +270,6 @@ public abstract class Tower : MonoBehaviour
             Debug.LogWarning(name + " has no projectile prefab assigned.", this);
             return null;
         }
-
         return Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
     }
 }

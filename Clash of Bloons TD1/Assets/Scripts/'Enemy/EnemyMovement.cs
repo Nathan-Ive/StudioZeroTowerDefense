@@ -1,9 +1,8 @@
-using System.Collections.Generic;
+using System.Collections.Generic; // Needed for List
 using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
-
     public static readonly List<EnemyMovement> ActiveEnemies = new List<EnemyMovement>();
 
     [Header("Waypoint Instellingen")]
@@ -63,6 +62,37 @@ public class EnemyMovement : MonoBehaviour
             {
                 currentWaypointIndex++;
             }
+        }
+    }
+
+
+    /// <summary>
+    /// Distance this enemy still has to walk: to its next waypoint, plus every path
+    /// segment after that. Small = almost at the fence. Used for "First" and "Last" targeting.
+    /// </summary>
+    public float DistanceToEnd
+    {
+        get
+        {
+            if (hasReachedEnd || waypoints == null || waypoints.Length == 0) return 0f;
+
+            float distance = 0f;
+
+            Transform nextWaypoint = waypoints[currentWaypointIndex];
+            if (nextWaypoint != null)
+            {
+                distance += Vector3.Distance(transform.position, nextWaypoint.position);
+            }
+
+            for (int i = currentWaypointIndex; i < waypoints.Length - 1; i++)
+            {
+                if (waypoints[i] != null && waypoints[i + 1] != null)
+                {
+                    distance += Vector3.Distance(waypoints[i].position, waypoints[i + 1].position);
+                }
+            }
+
+            return distance;
         }
     }
 }
