@@ -14,9 +14,10 @@ GameObject:
   - component: {fileID: 7332684649412753915}
   - component: {fileID: 7796175965295624197}
   - component: {fileID: 8916195645103174943}
+  - component: {fileID: -8083172706160370376}
   m_Layer: 0
   m_Name: enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -125,10 +126,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waypoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 8948243860327896974, guid: 435244bb0f41c854f95e3c80b75643eb, type: 3}
+  - {fileID: 1957169728277010861, guid: e2dc785a260f49747936b9aff44bdb18, type: 3}
+  - {fileID: 8986686598040720563, guid: 731aa3986931fad4f883cb3991c01ce3, type: 3}
+  - {fileID: 6872948749137628522, guid: ef8a0b892015b7c488e32b5b295c06a3, type: 3}
+  - {fileID: 4518150453247727674, guid: dbad02958f10f6540add3209cefb9ac8, type: 3}
+  - {fileID: 8538942645937248130, guid: eddabf841fc55ed4d8310ca3b75f1063, type: 3}
   speed: 5
   rotationSpeed: 5
 --- !u!114 &8916195645103174943
@@ -147,3 +150,16 @@ MonoBehaviour:
   enableRegen: 1
   regenRate: 5
   testDamageAmount: 10
+--- !u!114 &-8083172706160370376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1750751792221161221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65b521437f2cf1c4383ccd97e3054e60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageAmount: 1
