@@ -155,6 +155,10 @@ MonoBehaviour:
   rotationSpeed: 90
   mainBuildingPrefab: {fileID: 4223377326429882839, guid: 8249d7203fe709844abccb26cc7994b7, type: 3}
   mainBuildingCost: 100
+  mainBuildingRotationOffset: {x: 0, y: 0, z: 0}
+  bankPrefab: {fileID: 1037466167771377569, guid: 9e32796d5915fe74a8e0a79893e5f291, type: 3}
+  bankCost: 250
+  bankRotationOffset: {x: 0, y: 0, z: 0}
 --- !u!4 &210721189
 Transform:
   m_ObjectHideFlags: 0
