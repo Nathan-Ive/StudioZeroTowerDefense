@@ -471,6 +471,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 55647789}
   m_CullTransparentMesh: 1
+--- !u!1001 &136561793
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6320925607578264332, guid: 2fd6a84e62222d24086f234cbf339d1c, type: 3}
+      propertyPath: m_Name
+      value: ArcherTower
+      objectReference: {fileID: 0}
+    - target: {fileID: 8935718768863818425, guid: 2fd6a84e62222d24086f234cbf339d1c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -40.735775
+      objectReference: {fileID: 0}
+    - target: {fileID: 8935718768863818425, guid: 2fd6a84e62222d24086f234cbf339d1c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 8935718768863818425, guid: 2fd6a84e62222d24086f234cbf339d1c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 65.17901
+      objectReference: {fileID: 0}
+    - target: {fileID: 8935718768863818425, guid: 2fd6a84e62222d24086f234cbf339d1c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8935718768863818425, guid: 2fd6a84e62222d24086f234cbf339d1c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8935718768863818425, guid: 2fd6a84e62222d24086f234cbf339d1c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8935718768863818425, guid: 2fd6a84e62222d24086f234cbf339d1c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8935718768863818425, guid: 2fd6a84e62222d24086f234cbf339d1c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8935718768863818425, guid: 2fd6a84e62222d24086f234cbf339d1c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8935718768863818425, guid: 2fd6a84e62222d24086f234cbf339d1c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2fd6a84e62222d24086f234cbf339d1c, type: 3}
 --- !u!1 &154197914
 GameObject:
   m_ObjectHideFlags: 0
@@ -1147,71 +1204,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 534118040}
   m_CullTransparentMesh: 1
---- !u!1001 &574462514
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4169084529852370267, guid: d7c3f43dd9baae14f803f85a5990dc9e, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 4169084529852370267, guid: d7c3f43dd9baae14f803f85a5990dc9e, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 6320925607578264332, guid: d7c3f43dd9baae14f803f85a5990dc9e, type: 3}
-      propertyPath: m_Name
-      value: MedievalHooliganTower
-      objectReference: {fileID: 0}
-    - target: {fileID: 8935718768863818425, guid: d7c3f43dd9baae14f803f85a5990dc9e, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -47.280277
-      objectReference: {fileID: 0}
-    - target: {fileID: 8935718768863818425, guid: d7c3f43dd9baae14f803f85a5990dc9e, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.47
-      objectReference: {fileID: 0}
-    - target: {fileID: 8935718768863818425, guid: d7c3f43dd9baae14f803f85a5990dc9e, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 62.04499
-      objectReference: {fileID: 0}
-    - target: {fileID: 8935718768863818425, guid: d7c3f43dd9baae14f803f85a5990dc9e, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8935718768863818425, guid: d7c3f43dd9baae14f803f85a5990dc9e, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8935718768863818425, guid: d7c3f43dd9baae14f803f85a5990dc9e, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8935718768863818425, guid: d7c3f43dd9baae14f803f85a5990dc9e, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8935718768863818425, guid: d7c3f43dd9baae14f803f85a5990dc9e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8935718768863818425, guid: d7c3f43dd9baae14f803f85a5990dc9e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8935718768863818425, guid: d7c3f43dd9baae14f803f85a5990dc9e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: d7c3f43dd9baae14f803f85a5990dc9e, type: 3}
 --- !u!1 &610265457
 GameObject:
   m_ObjectHideFlags: 0
@@ -3091,6 +3083,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3491229883895625173, guid: 8dc5164af0062df42848bd250ee75856, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.92
+      objectReference: {fileID: 0}
     - target: {fileID: 6320925607578264332, guid: 8dc5164af0062df42848bd250ee75856, type: 3}
       propertyPath: m_Name
       value: SoldierTower
@@ -6431,4 +6427,4 @@ SceneRoots:
   - {fileID: 610265460}
   - {fileID: 1226081958}
   - {fileID: 1082878780}
-  - {fileID: 574462514}
+  - {fileID: 136561793}
