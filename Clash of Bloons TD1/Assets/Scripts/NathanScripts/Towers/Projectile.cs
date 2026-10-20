@@ -8,6 +8,8 @@ using UnityEngine;
 ///
 /// Hits are found by distance, not by Unity physics. That means projectiles need NO collider
 /// and NO Rigidbody, and they cannot get stuck on the road, the fence or each other.
+/// 
+/// This is important, because they will run into issues if they do.
 /// </summary>
 public class Projectile : MonoBehaviour
 {
