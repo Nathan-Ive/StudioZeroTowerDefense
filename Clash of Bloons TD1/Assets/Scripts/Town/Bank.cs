@@ -21,7 +21,7 @@ public class Bank : MonoBehaviour
             if (GameManager.Instance != null)
             {
                 GameManager.Instance.townCurrency += incomeAmount;
-                Debug.Log("Bank heeft " + incomeAmount + " muntjes gegenereerd!");
+                Debug.Log("Bank genereerde " + incomeAmount + " munten!");
             }
         }
     }
