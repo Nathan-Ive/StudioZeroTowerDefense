@@ -4,8 +4,8 @@ using System.Collections;
 public class Bank : MonoBehaviour
 {
     [Header("Bank Instellingen")]
-    public int incomeAmount = 10;
-    public float incomeInterval = 5f;
+    public int incomeAmount = 50;
+    public float incomeInterval = 20f;
 
     void Start()
     {

@@ -95,7 +95,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab2981996d6bbf34ebd6e3c4d469059d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  incomeAmount: 40
+  incomeAmount: 50
   incomeInterval: 20
 --- !u!114 &6138587734138781221
 MonoBehaviour:
