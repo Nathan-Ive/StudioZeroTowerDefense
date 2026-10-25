@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 696cd86d32f28234b94a66a5b52bc51c, type: 3}
   m_Name: MedievalHooliganData
   m_EditorClassIdentifier: 
-  towerName: New Tower
+  towerName: Medieval Hooligan
+  description: 
+  towerPrefab: {fileID: 6320925607578264332, guid: d7c3f43dd9baae14f803f85a5990dc9e, type: 3}
+  cost: 0
   damage: 2
   attackCooldown: 0.05

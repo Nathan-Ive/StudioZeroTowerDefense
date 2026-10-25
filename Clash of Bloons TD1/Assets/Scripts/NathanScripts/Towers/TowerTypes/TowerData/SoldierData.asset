@@ -13,5 +13,8 @@ MonoBehaviour:
   m_Name: SoldierData
   m_EditorClassIdentifier: 
   towerName: Soldier
+  description: 
+  towerPrefab: {fileID: 6320925607578264332, guid: 8dc5164af0062df42848bd250ee75856, type: 3}
+  cost: 0
   damage: 75
   attackCooldown: 1

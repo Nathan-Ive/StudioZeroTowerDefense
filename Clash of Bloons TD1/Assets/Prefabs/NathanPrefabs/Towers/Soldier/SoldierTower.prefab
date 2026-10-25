@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3491229883895625173}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: FirePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,8 +43,8 @@ GameObject:
   - component: {fileID: 83205595992938658}
   - component: {fileID: 4265481847523013748}
   - component: {fileID: 3512369195715526993}
-  m_Layer: 0
-  m_Name: Cube
+  m_Layer: 8
+  m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -96,7 +96,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: fd5e5eea18513f549bce536dcb081b7d, type: 2}
+  - {fileID: 2100000, guid: 9be1d03596f88c946b8669e2febf66b7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -149,7 +149,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8935718768863818425}
   - component: {fileID: 7117304265286809298}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SoldierTower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -206,7 +206,7 @@ GameObject:
   - component: {fileID: 2093940713080928916}
   - component: {fileID: 6422062705198401232}
   - component: {fileID: 6477499692351112079}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Range
   m_TagString: Untagged
   m_Icon: {fileID: 0}

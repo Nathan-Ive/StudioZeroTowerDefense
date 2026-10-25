@@ -14,14 +14,19 @@ using UnityEngine;
 ///   Target Priority (Closest, First, Last).
 ///
 ///
-/// 
-///
 /// It is "abstract", so you can never put a plain Tower in the scene: every tower must be a
 /// specific type, like SoldierTower. A child class changes behaviour by overriding a "virtual"
-/// method, usually Attack().
+/// method, usually Attack(). Anything it does not override, it inherits.
+///
+///   1. TowerPlacer spawns a tower and calls BeginPreview(): it follows the mouse, and shows its range.
+///   2. The player clicks: TowerPlacer calls Place(). The range hides and the tower starts fighting.
+///   A tower dragged into the scene by hand in the editor places itself in Start() (for testing).
 /// </summary>
 public abstract class Tower : MonoBehaviour
 {
+    /// <summary>Every placed tower in the scene. Not used yet; ready for selling, upgrades or saving later.</summary>
+    public static readonly List<Tower> PlacedTowers = new List<Tower>();
+
     [Header("Data")]
     [Tooltip("The TowerData asset with this tower's stats.")]
     [SerializeField] protected TowerData data;
@@ -45,7 +50,7 @@ public abstract class Tower : MonoBehaviour
     [SerializeField] protected Projectile projectilePrefab;
 
     [Header("Targeting")]
-    [Tooltip("Which enemy to attack when several are in range. You can change it in the Inspector during Play.")]
+    [Tooltip("Which enemy to attack when several are in range. The player can change it in the tower info panel.")]
     [SerializeField] protected TargetPriority priority = TargetPriority.First;
 
     protected EnemyMovement currentTarget;
@@ -54,13 +59,19 @@ public abstract class Tower : MonoBehaviour
     
     private float retargetTimer;     // seconds until the tower re-checks which enemy is the best target
     private const float RetargetInterval = 0.2f;
+    
+    //Placement state
+    private bool isPreview;
+    private bool isPlaced;
 
     // ---------------------------------------------------------------------------------
     // Read-only information for other scripts.
     // ---------------------------------------------------------------------------------
 
     public TowerData Data { get { return data; } }
+    public TowerRange Range { get { return range; } }
     public TargetPriority Priority { get { return priority; } }
+    public bool IsPlaced { get { return isPlaced; } }
 
     /// <summary>Damage of one hit, from TowerData. Every projectile this tower fires uses it.</summary>
     public float Damage
@@ -100,11 +111,21 @@ public abstract class Tower : MonoBehaviour
 
     protected virtual void Start()
     {
-        ShowRange(false);
+        // TowerPlacer calls BeginPreview() before Start.
+        // If it did not, the tower was placed by hand in the editor, so it will start fighting straight away.
+        if (!isPreview)
+        {
+            Place();
+        }
     }
 
     protected virtual void Update()
     {
+        if (!isPlaced)
+        {
+            return;
+        }
+
         if (cooldownTimer > 0f)
         {
             cooldownTimer -= Time.deltaTime;
@@ -129,6 +150,38 @@ public abstract class Tower : MonoBehaviour
             Attack(currentTarget);
             cooldownTimer = data.attackCooldown;
         }
+    }
+
+    protected virtual void OnDestroy()
+    {
+        PlacedTowers.Remove(this);
+    }
+
+    // ---------------------------------------------------------------------------------
+    // Placement (used by TowerPlacer)
+    // ---------------------------------------------------------------------------------
+
+    /// <summary>Called right after spawning: the tower follows the mouse and does not fight.</summary>
+    public void BeginPreview()
+    {
+        isPreview = true;
+        isPlaced = false;
+        ShowRange(true);
+    }
+
+    /// <summary>Called when the player confirms the spot. The tower starts fighting.</summary>
+    public void Place()
+    {
+        isPreview = false;
+        if (isPlaced)
+        {
+            return;
+        }
+
+        isPlaced = true;
+        PlacedTowers.Add(this);
+        ShowRange(false);
+        cooldownTimer = 0f; // first attack as soon as an enemy walks into range
     }
 
     /// <summary>Show or hide the range sphere. Hidden does not turn the range off.</summary>
@@ -186,7 +239,6 @@ public abstract class Tower : MonoBehaviour
     {
         List<EnemyMovement> inRange = new List<EnemyMovement>();
 
-        // EnemyMovement keeps a list of every living enemy, so we never have to search the whole scene.
         foreach (EnemyMovement enemy in EnemyMovement.ActiveEnemies)
         {
             if (enemy != null && range.Contains(enemy.transform.position))
