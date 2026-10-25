@@ -191,8 +191,12 @@ MonoBehaviour:
   partToRotate: {fileID: 2768795531981206180}
   turnSpeed: 10
   range: {fileID: 6477499692351112079}
-  projectilePrefab: {fileID: 1164773885027425498, guid: 28ff4d17df113a44b94a82d9e5703b3e, type: 3}
+  projectilePrefab: {fileID: 1013534512941926875, guid: 28ff4d17df113a44b94a82d9e5703b3e, type: 3}
   priority: 0
+  mode: 0
+  spreadArrowCount: 3
+  spreadAngle: 30
+  homingArrowCount: 2
 --- !u!1 &7645219626261198025
 GameObject:
   m_ObjectHideFlags: 0

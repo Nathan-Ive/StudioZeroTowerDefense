@@ -10,27 +10,36 @@ using UnityEngine;
 /// and NO Rigidbody, and they cannot get stuck on the road, the fence or each other.
 /// 
 /// This is important, because they will run into issues if they do.
+///
+/// This is the base class for every projectile. On its own it is the standard homing projectile (Soldier, Baker).
+/// Child classes change how it flies or what a hit does:
+///   StraightProjectile  flies in a straight line (Archer).
+///   FireballProjectile  a StraightProjectile that pierces enemies and burns them (Wizard).
+///   DirtProjectile      slows (and can stop) the enemy it hits (Medieval Hooligan).
 /// </summary>
 public class Projectile : MonoBehaviour
 {
     // How fast it flies
     [Header("Movement")]
     [Tooltip("Units per second.")]
-    [SerializeField] private float speed = 20f;
+    [SerializeField] protected float speed = 20f;
 
     // How close counts as a hit, and a safety timer
     [Tooltip("How close the projectile must get to an enemy to count as a hit.")]
-    [SerializeField] private float hitRadius = 0.6f;
+    [SerializeField] protected float hitRadius = 0.6f;
 
     [Tooltip("Safety net: the projectile is removed after this many seconds, whatever happens.")]
     [SerializeField] private float maxLifetime = 5f;
 
     // Set when it is launched
-    private bool launched;
-    private float damage;
+    protected bool launched;
+    protected float damage;
     private EnemyMovement target;
     private Vector3 lastKnownTargetPoint;
-    private float lifeTimer;
+    protected float lifeTimer;
+
+    /// <summary>Flight speed, read by towers to aim ahead of walking enemies.</summary>
+    public float Speed { get { return speed; } }
 
     // ---------------------------------------------------------------------------------
     // Launching
@@ -66,10 +75,16 @@ public class Projectile : MonoBehaviour
             return;
         }
 
+        Fly();
+    }
+
+    /// <summary>How the projectile moves each frame. Homing by default; StraightProjectile overrides it.</summary>
+    protected virtual void Fly()
+    {
         UpdateHoming();
     }
 
-    private void UpdateHoming()
+    protected void UpdateHoming()
     {
         if (target != null)
         {
@@ -99,7 +114,8 @@ public class Projectile : MonoBehaviour
     // Hitting
     // ---------------------------------------------------------------------------------
 
-    private void HitEnemy(EnemyMovement enemy)
+    /// <summary>What a hit does. Deals the damage; child classes override it to add effects (burn, slow).</summary>
+    protected virtual void HitEnemy(EnemyMovement enemy)
     {
         // Health is taken from EnemyHealth.cs.
         Health health = enemy.GetComponent<Health>();

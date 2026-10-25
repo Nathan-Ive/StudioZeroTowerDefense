@@ -191,8 +191,21 @@ MonoBehaviour:
   partToRotate: {fileID: 2768795531981206180}
   turnSpeed: 10
   range: {fileID: 6477499692351112079}
-  projectilePrefab: {fileID: 1164773885027425498, guid: f255524cbde513f43b7153fb2a0228b7, type: 3}
+  projectilePrefab: {fileID: 3869031360562883016, guid: f255524cbde513f43b7153fb2a0228b7, type: 3}
   priority: 0
+  hitSlowMultiplier: 0.5
+  hitSlowDuration: 2
+  hitStunDuration: 0
+  dirtPatchPrefab: {fileID: 0}
+  abilityCooldown: 15
+  patchEnemyLimit: 10
+  patchSlowMultiplier: 0.5
+  patchSlowDuration: 2
+  patchDamage: 0
+  patchStunDuration: 0
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &7645219626261198025
 GameObject:
   m_ObjectHideFlags: 0

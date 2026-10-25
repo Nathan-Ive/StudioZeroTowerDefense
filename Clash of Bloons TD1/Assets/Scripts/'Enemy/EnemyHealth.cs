@@ -14,6 +14,11 @@ public class Health : MonoBehaviour
     [Header("Test info")]
     public float testDamageAmount = 10f;
 
+    // Burning, applied by the Wizard.
+    private float burnDamagePerSecond = 0f;
+    private float burnTimer = 0f;      // seconds of burning left
+    private float burnTickTimer = 0f;  // seconds until the next burn damage
+
     void Start()
     {
         currentHealth = maxHealth;
@@ -22,6 +27,20 @@ public class Health : MonoBehaviour
     void Update()
     {
         if (isDead) return;
+
+        // Burning deals damage once per second while it lasts.
+        // Once per second (not every frame).
+        if (burnTimer > 0f)
+        {
+            burnTimer -= Time.deltaTime;
+            burnTickTimer -= Time.deltaTime;
+            if (burnTickTimer <= 0f)
+            {
+                burnTickTimer += 1f;
+                TakeDamage(burnDamagePerSecond);
+                if (isDead) return;
+            }
+        }
 
         //debug feature to do some damage
         if (Input.GetKeyDown(KeyCode.K))
@@ -55,6 +74,19 @@ public class Health : MonoBehaviour
 
         currentHealth = Mathf.Min(currentHealth + amount, maxHealth);
         Debug.Log(gameObject.name + " is Healing. Current health: " + currentHealth);
+    }
+
+    /// <summary>Set this enemy on fire. A new burn refreshes the duration and uses the new damage.</summary>
+    public void ApplyBurn(float damagePerSecond, float duration)
+    {
+        if (isDead || damagePerSecond <= 0f || duration <= 0f) return;
+
+        if (burnTimer <= 0f)
+        {
+            burnTickTimer = 1f; // first burn damage one second after catching fire
+        }
+        burnDamagePerSecond = damagePerSecond;
+        burnTimer = Mathf.Max(burnTimer, duration);
     }
 
     void Die()
