@@ -13,6 +13,11 @@ public class EnemyMovement : MonoBehaviour
     private bool hasReachedEnd = false;
     private EnemyDamageScript damageScript;
 
+    // Slow and stun, applied by the Medieval Hooligan.
+    private float slowMultiplier = 1f; // 1 = normal speed, 0.5 = half speed
+    private float slowTimer = 0f;
+    private float stunTimer = 0f;
+
     void OnEnable()
     {
         ActiveEnemies.Add(this);
@@ -32,6 +37,10 @@ public class EnemyMovement : MonoBehaviour
     {
         if (hasReachedEnd || waypoints.Length == 0) return;
 
+        // A stunned enemy does not move.
+        UpdateSlowAndStun();
+        if (stunTimer > 0f) return;
+
         Transform targetWaypoint = waypoints[currentWaypointIndex];
         if (targetWaypoint == null)
         {
@@ -39,7 +48,7 @@ public class EnemyMovement : MonoBehaviour
             return;
         }
 
-        transform.position = Vector3.MoveTowards(transform.position, targetWaypoint.position, speed * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, targetWaypoint.position, speed * slowMultiplier * Time.deltaTime); // slowMultiplier is 1 when not slowed
         Vector3 direction = (targetWaypoint.position - transform.position).normalized;
 
         if (direction != Vector3.zero)
@@ -93,6 +102,60 @@ public class EnemyMovement : MonoBehaviour
             }
 
             return distance;
+        }
+    }
+
+    /// <summary>
+    /// Direction and speed this enemy is walking right now (zero when stunned or finished).
+    /// Straight projectiles use it to aim where the enemy will be.
+    /// </summary>
+    public Vector3 Velocity
+    {
+        get
+        {
+            if (hasReachedEnd || stunTimer > 0f || waypoints == null || waypoints.Length == 0) return Vector3.zero;
+
+            Transform nextWaypoint = waypoints[currentWaypointIndex];
+            if (nextWaypoint == null) return Vector3.zero;
+
+            Vector3 direction = (nextWaypoint.position - transform.position).normalized;
+            return direction * speed * slowMultiplier;
+        }
+    }
+
+    /// <summary>
+    /// Slow this enemy down. multiplier 0.5 = half speed. duration in seconds (Mathf.Infinity = permanent).
+    /// When two slows overlap, the stronger one wins.
+    /// </summary>
+    public void ApplySlow(float multiplier, float duration)
+    {
+        if (slowTimer <= 0f || multiplier <= slowMultiplier)
+        {
+            slowMultiplier = Mathf.Clamp01(multiplier);
+            slowTimer = Mathf.Max(slowTimer, duration);
+        }
+    }
+
+    /// <summary>Stop this enemy completely for a number of seconds.</summary>
+    public void Stun(float duration)
+    {
+        stunTimer = Mathf.Max(stunTimer, duration);
+    }
+
+    private void UpdateSlowAndStun()
+    {
+        if (slowTimer > 0f)
+        {
+            slowTimer -= Time.deltaTime;
+            if (slowTimer <= 0f)
+            {
+                slowMultiplier = 1f; // Slow down wears off
+            }
+        }
+
+        if (stunTimer > 0f)
+        {
+            stunTimer -= Time.deltaTime;
         }
     }
 }

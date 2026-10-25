@@ -191,8 +191,13 @@ MonoBehaviour:
   partToRotate: {fileID: 2768795531981206180}
   turnSpeed: 10
   range: {fileID: 6477499692351112079}
-  projectilePrefab: {fileID: 1164773885027425498, guid: cb7246b05c7cbee4eadc31a60fc04a18, type: 3}
+  projectilePrefab: {fileID: 4310558587630230211, guid: cb7246b05c7cbee4eadc31a60fc04a18, type: 3}
   priority: 0
+  pierceCount: 3
+  infinitePierce: 0
+  burnDuration: 0
+  burnDamagePerSecond: 1
+  travelDistanceMultiplier: 1.5
 --- !u!1 &7645219626261198025
 GameObject:
   m_ObjectHideFlags: 0

@@ -12,6 +12,9 @@ using UnityEngine;
 ///   Cooldown and automatic shooting.
 ///   Only shoot targets within range.
 ///   Target Priority (Closest, First, Last).
+///   Each tower type can change its attack by overriding Attack().
+///   The Baker's damage bonus is added to every tower's damage.
+///   Modes the player can switch in the info panel (only the Archer has one).
 ///
 ///
 /// It is "abstract", so you can never put a plain Tower in the scene: every tower must be a
@@ -56,10 +59,10 @@ public abstract class Tower : MonoBehaviour
     protected EnemyMovement currentTarget;
 
     private float cooldownTimer;     // seconds until the next attack is allowed
-    
+
     private float retargetTimer;     // seconds until the tower re-checks which enemy is the best target
     private const float RetargetInterval = 0.2f;
-    
+
     //Placement state
     private bool isPreview;
     private bool isPlaced;
@@ -73,11 +76,25 @@ public abstract class Tower : MonoBehaviour
     public TargetPriority Priority { get { return priority; } }
     public bool IsPlaced { get { return isPlaced; } }
 
-    /// <summary>Damage of one hit, from TowerData. Every projectile this tower fires uses it.</summary>
+    /// <summary>
+    /// Damage of one hit right now: the base damage from TowerData plus any Baker bonus.
+    /// Every projectile this tower fires uses it.
+    /// </summary>
     public float Damage
     {
-        get { return data.damage; }
+        get { return data.damage + BakerTower.GetDamageBonusFor(this); }
     }
+
+    // Modes, used by the tower info panel. Only the Archer overrides these.
+
+    /// <summary>Does this tower have a mode the player can switch?</summary>
+    public virtual bool HasMode { get { return false; } }
+
+    /// <summary>Name of the current mode, shown on the mode button.</summary>
+    public virtual string ModeLabel { get { return ""; } }
+
+    /// <summary>Switch to the next mode. Does nothing unless a child class overrides it.</summary>
+    public virtual void ToggleMode() { }
 
     // ---------------------------------------------------------------------------------
     // Unity messages
@@ -182,7 +199,11 @@ public abstract class Tower : MonoBehaviour
         PlacedTowers.Add(this);
         ShowRange(false);
         cooldownTimer = 0f; // first attack as soon as an enemy walks into range
+        OnPlaced();
     }
+
+    /// <summary>For child classes that need to do something once placed (the Baker and the Medieval Hooligan).</summary>
+    protected virtual void OnPlaced() { }
 
     /// <summary>Show or hide the range sphere. Hidden does not turn the range off.</summary>
     public void ShowRange(bool visible)
@@ -234,7 +255,10 @@ public abstract class Tower : MonoBehaviour
         return enemies[0];
     }
 
-    /// <summary>Every enemy inside the range, sorted with the best target first.</summary>
+    /// <summary>
+    /// Every enemy inside the range, sorted with the best target first.
+    /// The Archer's homing mode uses the whole list to spread its arrows over several enemies.
+    /// </summary>
     protected List<EnemyMovement> GetEnemiesInRange()
     {
         List<EnemyMovement> inRange = new List<EnemyMovement>();
@@ -323,5 +347,33 @@ public abstract class Tower : MonoBehaviour
             return null;
         }
         return Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
+    }
+
+    /// <summary>
+    /// Direction from the fire point to where an enemy will be when the projectile arrives, flat on the ground.
+    /// Used by projectiles that fly in a straight line (Archer spread, Wizard fireball), which would otherwise miss a walking enemy.
+    ///
+    /// Time to arrive = distance / projectile speed. In that time the enemy walks Velocity x time further, so the tower aims at that spot.
+    /// </summary>
+    protected Vector3 FlatDirectionTo(EnemyMovement target)
+    {
+        Vector3 aimPoint = target.transform.position;
+
+        float projectileSpeed = projectilePrefab != null ? projectilePrefab.Speed : 0f;
+        if (projectileSpeed > 0f)
+        {
+            float distance = Vector3.Distance(firePoint.position, aimPoint);
+            float travelTime = distance / projectileSpeed;
+            aimPoint += target.Velocity * travelTime;
+        }
+
+        Vector3 direction = aimPoint - firePoint.position;
+        direction.y = 0f;
+        if (direction.sqrMagnitude < 0.001f)
+        {
+            direction = transform.forward;
+            direction.y = 0f;
+        }
+        return direction.normalized;
     }
 }

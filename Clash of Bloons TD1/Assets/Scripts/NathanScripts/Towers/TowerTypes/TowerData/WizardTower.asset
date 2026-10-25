@@ -16,5 +16,5 @@ MonoBehaviour:
   description: 
   towerPrefab: {fileID: 6320925607578264332, guid: edbc8d3cbdcf9ca4abeec11678a5f631, type: 3}
   cost: 0
-  damage: 5
+  damage: 60
   attackCooldown: 2
