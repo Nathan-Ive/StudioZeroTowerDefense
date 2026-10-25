@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 696cd86d32f28234b94a66a5b52bc51c, type: 3}
   m_Name: WizardTower
   m_EditorClassIdentifier: 
-  towerName: New Tower
+  towerName: Wizard
+  description: 
+  towerPrefab: {fileID: 6320925607578264332, guid: edbc8d3cbdcf9ca4abeec11678a5f631, type: 3}
+  cost: 0
   damage: 5
   attackCooldown: 2

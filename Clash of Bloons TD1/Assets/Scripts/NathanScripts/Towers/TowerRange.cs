@@ -11,8 +11,8 @@ using UnityEngine;
 /// 
 /// - The check ignores height (Y). Range is a circle on the ground, so a tall tower and a
 ///   short enemy still count as "in range" when they stand inside the circle.
-/// 
-/// - In Play the sphere is hidden. (Later, I will make it so that it only shows while placing or selecting a tower.)
+///   
+/// - The sphere is only visible while the tower is being placed or is selected.
 ///
 /// Setup: 
 /// Tower prefab > right-click > 3D Object > Sphere, name it "Range".

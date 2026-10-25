@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 2885117773745752148}
   - component: {fileID: 1164773885027425498}
   m_Layer: 0
-  m_Name: SoldierProjectile
+  m_Name: BakerProjectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
