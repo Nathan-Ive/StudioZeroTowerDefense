@@ -191,7 +191,7 @@ MonoBehaviour:
   partToRotate: {fileID: 2768795531981206180}
   turnSpeed: 10
   range: {fileID: 6477499692351112079}
-  projectilePrefab: {fileID: 1164773885027425498, guid: d695a46ee2cf3d842b1dd1af9dbc4ce9, type: 3}
+  projectilePrefab: {fileID: 1164773885027425498, guid: 90015745023e09f4892f150c4fbe7e22, type: 3}
   priority: 0
 --- !u!1 &7645219626261198025
 GameObject:
