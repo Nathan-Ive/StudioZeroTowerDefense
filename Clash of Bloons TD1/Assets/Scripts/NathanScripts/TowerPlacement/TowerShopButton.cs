@@ -14,6 +14,11 @@ public class TowerShopButton : MonoBehaviour
 {
     [SerializeField] private TowerData towerData;
 
+    // ======GSL=====
+    [Header("Shop Unlock Settings")]
+    [SerializeField] private string prefabName; 
+    // ======GSL=====
+
     [Tooltip("Optional: the button's text. It is filled with the tower's name.")]
     [SerializeField] private TMP_Text label;
 
@@ -40,6 +45,19 @@ public class TowerShopButton : MonoBehaviour
         {
             label.text = towerData.towerName;
         }
+
+        // ======GSL start
+        bool isUnlocked = false;
+        foreach (var savedTower in TowerSaveData.SavedTowers)
+        {
+            if (savedTower.prefabName == prefabName)
+            {
+                isUnlocked = true;
+                break;
+            }
+        }
+        button.interactable = isUnlocked;
+        // ======GSL===== end
     }
 
     private void OnClick()

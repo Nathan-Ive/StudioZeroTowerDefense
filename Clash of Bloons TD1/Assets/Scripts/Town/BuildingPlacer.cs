@@ -8,6 +8,13 @@ public class BuildingPlacer : MonoBehaviour
     public float heightOffset = 0f;
     public float rotationSpeed = 90f;
 
+    [Header("Audio Settings")]
+    [SerializeField] private AudioClip placementSound;
+    [SerializeField] private AudioSource audioSource;
+
+    [Header("Currency Audio Settings")]
+    [SerializeField] private AudioClip currencySpendSound;
+
     private GameObject activePreview;
     private BuildingInfo currentBuildingInfo;
     private Camera mainCamera;
@@ -16,6 +23,11 @@ public class BuildingPlacer : MonoBehaviour
     void Start()
     {
         mainCamera = Camera.main;
+
+        if (audioSource == null)
+        {
+            audioSource = GetComponent<AudioSource>();
+        }
     }
 
     void Update()
@@ -43,19 +55,32 @@ public class BuildingPlacer : MonoBehaviour
 
         currentBuildingInfo = prefab.GetComponent<BuildingInfo>();
 
+        int cost = currentBuildingInfo != null ? currentBuildingInfo.cost : 100;
+
+        if (GameManager.Instance != null)
+        {
+            if (GameManager.Instance.townCurrency < cost)
+            {
+                Debug.Log("Niet genoeg munten om deze toren te kopen!");
+                currentBuildingInfo = null;
+                return;
+            }
+            GameManager.Instance.townCurrency -= cost;
+            if (currencySpendSound != null && audioSource != null)
+            {
+                audioSource.PlayOneShot(currencySpendSound);
+            }
+            else if (currencySpendSound != null)
+            {
+                AudioSource.PlayClipAtPoint(currencySpendSound, transform.position);
+            }
+        }
+
         StartPlacement(prefab);
     }
 
     void StartPlacement(GameObject prefab)
     {
-        int cost = currentBuildingInfo != null ? currentBuildingInfo.cost : 100;
-
-        if (GameManager.Instance != null && GameManager.Instance.townCurrency < cost)
-        {
-            Debug.Log("Niet genoeg munten!");
-            return;
-        }
-
         activePreview = Instantiate(prefab);
         currentRotation = 0f;
 
@@ -100,26 +125,29 @@ public class BuildingPlacer : MonoBehaviour
 
     void ConfirmPlacement()
     {
-        int cost = currentBuildingInfo != null ? currentBuildingInfo.cost : 100;
-
-        if (GameManager.Instance != null)
+        if (activePreview != null)
         {
-            if (GameManager.Instance.townCurrency < cost)
+            activePreview.tag = "BuildTower";
+            Collider[] colliders = activePreview.GetComponentsInChildren<Collider>();
+            foreach (Collider col in colliders)
             {
-                Debug.Log("Niet genoeg munten om te plaatsen!");
-                Destroy(activePreview);
-                activePreview = null;
-                return;
+                col.enabled = true;
             }
-            GameManager.Instance.townCurrency -= cost;
-        }
+            BuildingInfo info = activePreview.GetComponent<BuildingInfo>();
+            if (info == null)
+            {
+                Debug.LogWarning("Let op: dit geplaatste object heeft geen BuildingInfo script!");
+            }
+            if (placementSound != null && audioSource != null)
+            {
+                audioSource.PlayOneShot(placementSound);
+            }
+            else if (placementSound != null)
+            {
+                AudioSource.PlayClipAtPoint(placementSound, activePreview.transform.position);
+            }
 
-        Collider[] colliders = activePreview.GetComponentsInChildren<Collider>();
-        foreach (Collider col in colliders)
-        {
-            col.enabled = true;
+            activePreview = null;
         }
-
-        activePreview = null;
     }
 }

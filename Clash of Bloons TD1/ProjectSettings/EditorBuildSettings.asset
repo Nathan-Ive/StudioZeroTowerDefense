@@ -17,6 +17,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Town.unity
     guid: fe7403f5c8bc5b843a7d958071c63498
+  - enabled: 1
+    path: Assets/Scenes/NathanScenes/CopyTestBattleGround_Nathan.unity
+    guid: 730b1c7bfa7974b43993a2421f059c39
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

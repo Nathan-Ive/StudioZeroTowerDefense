@@ -64,6 +64,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BankBuilding
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 01998556e835f9449980db24ee9139c6, type: 3}
+      propertyPath: m_TagString
+      value: BuildTower
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -111,6 +115,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cost: 250
   rotationOffset: {x: 0, y: 0, z: 0}
+  prefabName: BankBuilding
 --- !u!1 &6744295282811201480 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -2360953857237879496, guid: 01998556e835f9449980db24ee9139c6, type: 3}

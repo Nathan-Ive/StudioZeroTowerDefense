@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - Bullet
   - Waypoint
+  - BuildTower
   layers:
   - Default
   - TransparentFX

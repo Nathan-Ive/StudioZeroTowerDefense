@@ -1891,27 +1891,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waves:
   - waveName: Wave 1
-    enemyPrefab: {fileID: 538468389916142223, guid: f4103709a893ead4689fd574073e0366, type: 3}
+    enemyPrefabs: []
     count: 1
     rate: 1
   - waveName: Wave 2
-    enemyPrefab: {fileID: 538468389916142223, guid: f4103709a893ead4689fd574073e0366, type: 3}
+    enemyPrefabs: []
     count: 3
     rate: 1.25
   - waveName: Wave 3
-    enemyPrefab: {fileID: 538468389916142223, guid: f4103709a893ead4689fd574073e0366, type: 3}
+    enemyPrefabs: []
     count: 6
     rate: 1.5
   - waveName: Wave 4
-    enemyPrefab: {fileID: 538468389916142223, guid: f4103709a893ead4689fd574073e0366, type: 3}
+    enemyPrefabs: []
     count: 8
     rate: 2
   - waveName: Wave 5
-    enemyPrefab: {fileID: 538468389916142223, guid: f4103709a893ead4689fd574073e0366, type: 3}
+    enemyPrefabs: []
     count: 12
     rate: 2.5
   - waveName: Wave 5
-    enemyPrefab: {fileID: 538468389916142223, guid: f4103709a893ead4689fd574073e0366, type: 3}
+    enemyPrefabs: []
     count: 50
     rate: 3
   spawnPoint: {fileID: 2051368217}
@@ -4081,6 +4081,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerData: {fileID: 11400000, guid: 98cd99a188055834186cdf1379e447d6, type: 2}
+  prefabName: Bakery
   label: {fileID: 1609924394}
 --- !u!1 &1205509003
 GameObject:
@@ -4889,6 +4890,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerData: {fileID: 11400000, guid: fdf865a22e36e3c4fb4bd2a6e66d4aaa, type: 2}
+  prefabName: ArcherTower
   label: {fileID: 534118042}
 --- !u!1 &1262013728
 GameObject:
@@ -5367,6 +5369,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerData: {fileID: 11400000, guid: c80489f3821b2d74daedbe15fd865bfd, type: 2}
+  prefabName: MainBuilding
   label: {fileID: 1247447208}
 --- !u!1 &1371313607
 GameObject:
@@ -7025,6 +7028,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerData: {fileID: 11400000, guid: 33c8c9eb61ad14e4fbff12c2314de8b9, type: 2}
+  prefabName: BankBuilding
   label: {fileID: 1208551309}
 --- !u!1 &1900294258
 GameObject:
@@ -7399,6 +7403,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerData: {fileID: 11400000, guid: a4bf4d538dc93c044884e94684af0fd5, type: 2}
+  prefabName: tent
   label: {fileID: 55647791}
 --- !u!1 &2046125739
 GameObject:

@@ -91,3 +91,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cost: 100
   rotationOffset: {x: -90, y: 0, z: 0}
+  prefabName: MainBuilding
