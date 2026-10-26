@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 7962229002251925164}
   - component: {fileID: 7677577782626700087}
   m_Layer: 0
-  m_Name: ExtremelyFastKillerMonkey
+  m_Name: InvincibleMonkey
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -149,8 +149,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  speed: 200
-  rotationSpeed: 200
+  speed: 0.5
+  rotationSpeed: 0.5
 --- !u!114 &7962229002251925164
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -163,9 +163,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce64a13a31bbb324bb42f12c52c288c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 1
+  maxHealth: 1e+20
   enableRegen: 1
-  regenRate: 5
+  regenRate: 1
   testDamageAmount: 10
 --- !u!114 &7677577782626700087
 MonoBehaviour:
@@ -179,7 +179,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65b521437f2cf1c4383ccd97e3054e60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageAmount: 10
+  damageAmount: 0
 --- !u!1001 &302249697002716193
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -231,7 +231,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 6641d9483f39c8f41a6906320ddf0115, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: fd5e5eea18513f549bce536dcb081b7d, type: 2}
+      objectReference: {fileID: -6478536213147159724, guid: 53a14e9f846e450478436e7a128fdd72, type: 3}
     - target: {fileID: 919132149155446097, guid: 6641d9483f39c8f41a6906320ddf0115, type: 3}
       propertyPath: m_Name
       value: Monkey
