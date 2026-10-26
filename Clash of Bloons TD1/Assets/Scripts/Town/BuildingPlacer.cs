@@ -8,19 +8,8 @@ public class BuildingPlacer : MonoBehaviour
     public float heightOffset = 0f;
     public float rotationSpeed = 90f;
 
-    [Header("Buildings")]
-    public GameObject mainBuildingPrefab;
-    public int mainBuildingCost = 100;
-    public Vector3 mainBuildingRotationOffset = Vector3.zero;
-
-    public GameObject bankPrefab;
-    public int bankCost = 250;
-    public Vector3 bankRotationOffset = Vector3.zero;
-
     private GameObject activePreview;
-    private GameObject currentPrefab;
-    private int currentCost;
-    private Vector3 currentRotationOffset;
+    private BuildingInfo currentBuildingInfo;
     private Camera mainCamera;
     private float currentRotation = 0f;
 
@@ -43,41 +32,31 @@ public class BuildingPlacer : MonoBehaviour
         }
     }
 
-    public void SelectMainBuilding()
-    {
-        SelectBuilding(mainBuildingPrefab, mainBuildingCost, mainBuildingRotationOffset);
-    }
-
-    public void SelectBankBuilding()
-    {
-        SelectBuilding(bankPrefab, bankCost, bankRotationOffset);
-    }
-
-    void SelectBuilding(GameObject prefab, int cost, Vector3 rotOffset)
+    public void SelectBuilding(GameObject prefab)
     {
         if (activePreview != null)
         {
             Destroy(activePreview);
         }
 
-        currentPrefab = prefab;
-        currentCost = cost;
-        currentRotationOffset = rotOffset;
+        if (prefab == null) return;
 
-        StartPlacement();
+        currentBuildingInfo = prefab.GetComponent<BuildingInfo>();
+
+        StartPlacement(prefab);
     }
 
-    void StartPlacement()
+    void StartPlacement(GameObject prefab)
     {
-        if (currentPrefab == null) return;
+        int cost = currentBuildingInfo != null ? currentBuildingInfo.cost : 100;
 
-        if (GameManager.Instance != null && GameManager.Instance.townCurrency < currentCost)
+        if (GameManager.Instance != null && GameManager.Instance.townCurrency < cost)
         {
-            Debug.Log("Not enough coins!");
+            Debug.Log("Niet genoeg munten!");
             return;
         }
 
-        activePreview = Instantiate(currentPrefab);
+        activePreview = Instantiate(prefab);
         currentRotation = 0f;
 
         Collider[] colliders = activePreview.GetComponentsInChildren<Collider>();
@@ -101,10 +80,11 @@ public class BuildingPlacer : MonoBehaviour
 
             activePreview.transform.position = targetPosition;
 
+            Vector3 offset = currentBuildingInfo != null ? currentBuildingInfo.rotationOffset : Vector3.zero;
             activePreview.transform.rotation = Quaternion.Euler(
-                currentRotationOffset.x,
-                currentRotationOffset.y + currentRotation,
-                currentRotationOffset.z
+                offset.x,
+                offset.y + currentRotation,
+                offset.z
             );
         }
     }
@@ -120,16 +100,18 @@ public class BuildingPlacer : MonoBehaviour
 
     void ConfirmPlacement()
     {
+        int cost = currentBuildingInfo != null ? currentBuildingInfo.cost : 100;
+
         if (GameManager.Instance != null)
         {
-            if (GameManager.Instance.townCurrency < currentCost)
+            if (GameManager.Instance.townCurrency < cost)
             {
-                Debug.Log("Not enough coins to place!");
+                Debug.Log("Niet genoeg munten om te plaatsen!");
                 Destroy(activePreview);
                 activePreview = null;
                 return;
             }
-            GameManager.Instance.townCurrency -= currentCost;
+            GameManager.Instance.townCurrency -= cost;
         }
 
         Collider[] colliders = activePreview.GetComponentsInChildren<Collider>();

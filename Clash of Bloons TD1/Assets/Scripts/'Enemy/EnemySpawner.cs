@@ -7,7 +7,7 @@ public class WaveSpawner : MonoBehaviour
     public class Wave
     {
         public string waveName;
-        public GameObject enemyPrefab;
+        public GameObject[] enemyPrefabs;
         public int count;
         public float rate;
     }
@@ -51,7 +51,12 @@ public class WaveSpawner : MonoBehaviour
 
         for (int i = 0; i < currentWave.count; i++)
         {
-            SpawnEnemy(currentWave.enemyPrefab);
+            if (currentWave.enemyPrefabs != null && currentWave.enemyPrefabs.Length > 0)
+            {
+                GameObject randomPrefab = currentWave.enemyPrefabs[Random.Range(0, currentWave.enemyPrefabs.Length)];
+                SpawnEnemy(randomPrefab);
+            }
+
             yield return new WaitForSeconds(1f / currentWave.rate);
         }
 
