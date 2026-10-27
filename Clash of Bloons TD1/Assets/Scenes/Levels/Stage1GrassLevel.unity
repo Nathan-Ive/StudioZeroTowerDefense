@@ -1906,7 +1906,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1291393471212635092, guid: 488c652790b9c7340894ac92add37326, type: 3}
       propertyPath: prefabName
-      value: MainBuilding
+      value: tent
       objectReference: {fileID: 0}
     - target: {fileID: 4016414679680600628, guid: 488c652790b9c7340894ac92add37326, type: 3}
       propertyPath: prefabName
@@ -1994,7 +1994,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4268905652450532957, guid: 488c652790b9c7340894ac92add37326, type: 3}
       propertyPath: prefabName
-      value: ArcherTower
+      value: BankBuilding
       objectReference: {fileID: 0}
     - target: {fileID: 5782951188040216773, guid: 488c652790b9c7340894ac92add37326, type: 3}
       propertyPath: m_Name
@@ -2002,7 +2002,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9192315976175425642, guid: 488c652790b9c7340894ac92add37326, type: 3}
       propertyPath: prefabName
-      value: MainBuilding
+      value: Main
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
