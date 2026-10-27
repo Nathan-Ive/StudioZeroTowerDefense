@@ -193,7 +193,7 @@ MonoBehaviour:
   range: {fileID: 6477499692351112079}
   projectilePrefab: {fileID: 1164773885027425498, guid: 90015745023e09f4892f150c4fbe7e22, type: 3}
   priority: 0
-  damageBonus: 20
+  damageBonus: 25
 --- !u!1 &7645219626261198025
 GameObject:
   m_ObjectHideFlags: 0
