@@ -800,7 +800,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Clash of bloons
+  m_text: Clash of Bloons
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: bedc357f43e86f848b1171520899eda7, type: 2}
   m_sharedMaterial: {fileID: -8143384170594100558, guid: bedc357f43e86f848b1171520899eda7, type: 2}

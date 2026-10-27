@@ -2891,23 +2891,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waves:
   - waveName: Wave 1
-    enemyPrefab: {fileID: 538468389916142223, guid: 9cf0706361ecd6a4a90a4c18fc3bc569, type: 3}
+    enemyPrefabs:
+    - {fileID: 538468389916142223, guid: dd2f336cf558a644a8f40d34d2ac4863, type: 3}
     count: 1
     rate: 1
   - waveName: Wave 2
-    enemyPrefab: {fileID: 538468389916142223, guid: dd2f336cf558a644a8f40d34d2ac4863, type: 3}
+    enemyPrefabs:
+    - {fileID: 538468389916142223, guid: dd2f336cf558a644a8f40d34d2ac4863, type: 3}
+    - {fileID: 538468389916142223, guid: 6efa3ef5aef474f43ad40a82cce50894, type: 3}
     count: 2
     rate: 2
   - waveName: Wave 3
-    enemyPrefab: {fileID: 538468389916142223, guid: dd2f336cf558a644a8f40d34d2ac4863, type: 3}
+    enemyPrefabs:
+    - {fileID: 538468389916142223, guid: dd2f336cf558a644a8f40d34d2ac4863, type: 3}
+    - {fileID: 538468389916142223, guid: 6efa3ef5aef474f43ad40a82cce50894, type: 3}
     count: 8
     rate: 3
   - waveName: Wave 4
-    enemyPrefab: {fileID: 538468389916142223, guid: 6efa3ef5aef474f43ad40a82cce50894, type: 3}
+    enemyPrefabs:
+    - {fileID: 538468389916142223, guid: e182e3e9a803cf54a9c63f4f1f0771b8, type: 3}
     count: 4
     rate: 2
   - waveName: Wave 5
-    enemyPrefab: {fileID: 538468389916142223, guid: e182e3e9a803cf54a9c63f4f1f0771b8, type: 3}
+    enemyPrefabs:
+    - {fileID: 538468389916142223, guid: e182e3e9a803cf54a9c63f4f1f0771b8, type: 3}
+    - {fileID: 538468389916142223, guid: 6efa3ef5aef474f43ad40a82cce50894, type: 3}
     count: 12
     rate: 1
   spawnPoint: {fileID: 597690002}
@@ -3182,6 +3190,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   heightOffset: 0.5
+  placementSound: {fileID: 0}
+  audioSource: {fileID: 0}
 --- !u!4 &733166270
 Transform:
   m_ObjectHideFlags: 0
@@ -3335,30 +3345,39 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waves:
-  - waveName: Wave 6
-    enemyPrefab: {fileID: 538468389916142223, guid: 547f2ce20fc77c448ac4e6132e78abd9, type: 3}
-    count: 1
-    rate: 1
   - waveName: Wave 1
-    enemyPrefab: {fileID: 538468389916142223, guid: dd2f336cf558a644a8f40d34d2ac4863, type: 3}
+    enemyPrefabs:
+    - {fileID: 538468389916142223, guid: dd2f336cf558a644a8f40d34d2ac4863, type: 3}
     count: 1
     rate: 1
   - waveName: Wave 2
-    enemyPrefab: {fileID: 538468389916142223, guid: 6efa3ef5aef474f43ad40a82cce50894, type: 3}
+    enemyPrefabs:
+    - {fileID: 538468389916142223, guid: e182e3e9a803cf54a9c63f4f1f0771b8, type: 3}
     count: 5
     rate: 2
   - waveName: Wave 3
-    enemyPrefab: {fileID: 538468389916142223, guid: e182e3e9a803cf54a9c63f4f1f0771b8, type: 3}
+    enemyPrefabs:
+    - {fileID: 538468389916142223, guid: dd2f336cf558a644a8f40d34d2ac4863, type: 3}
+    - {fileID: 538468389916142223, guid: e182e3e9a803cf54a9c63f4f1f0771b8, type: 3}
     count: 20
     rate: 3
   - waveName: Wave 4
-    enemyPrefab: {fileID: 538468389916142223, guid: dd2f336cf558a644a8f40d34d2ac4863, type: 3}
+    enemyPrefabs:
+    - {fileID: 538468389916142223, guid: dd2f336cf558a644a8f40d34d2ac4863, type: 3}
+    - {fileID: 538468389916142223, guid: e182e3e9a803cf54a9c63f4f1f0771b8, type: 3}
     count: 20
     rate: 0.5
   - waveName: Wave 5
-    enemyPrefab: {fileID: 538468389916142223, guid: e182e3e9a803cf54a9c63f4f1f0771b8, type: 3}
+    enemyPrefabs:
+    - {fileID: 538468389916142223, guid: e182e3e9a803cf54a9c63f4f1f0771b8, type: 3}
     count: 25
     rate: 3
+  - waveName: Wave 6
+    enemyPrefabs:
+    - {fileID: 538468389916142223, guid: 9cf0706361ecd6a4a90a4c18fc3bc569, type: 3}
+    - {fileID: 538468389916142223, guid: 547f2ce20fc77c448ac4e6132e78abd9, type: 3}
+    count: 1
+    rate: 1
   spawnPoint: {fileID: 3161938}
   waypoints:
   - {fileID: 3161938}
@@ -5557,23 +5576,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waves:
   - waveName: Wave 1
-    enemyPrefab: {fileID: 538468389916142223, guid: f4103709a893ead4689fd574073e0366, type: 3}
+    enemyPrefabs:
+    - {fileID: 538468389916142223, guid: dd2f336cf558a644a8f40d34d2ac4863, type: 3}
     count: 2
     rate: 1
   - waveName: Wave 2
-    enemyPrefab: {fileID: 538468389916142223, guid: f4103709a893ead4689fd574073e0366, type: 3}
+    enemyPrefabs:
+    - {fileID: 538468389916142223, guid: 6efa3ef5aef474f43ad40a82cce50894, type: 3}
     count: 8
     rate: 2
   - waveName: Wave 3
-    enemyPrefab: {fileID: 538468389916142223, guid: f4103709a893ead4689fd574073e0366, type: 3}
+    enemyPrefabs:
+    - {fileID: 538468389916142223, guid: dd2f336cf558a644a8f40d34d2ac4863, type: 3}
+    - {fileID: 538468389916142223, guid: 6efa3ef5aef474f43ad40a82cce50894, type: 3}
     count: 4
     rate: 5
   - waveName: Wave 4
-    enemyPrefab: {fileID: 538468389916142223, guid: f4103709a893ead4689fd574073e0366, type: 3}
+    enemyPrefabs:
+    - {fileID: 538468389916142223, guid: dd2f336cf558a644a8f40d34d2ac4863, type: 3}
+    - {fileID: 538468389916142223, guid: 6efa3ef5aef474f43ad40a82cce50894, type: 3}
     count: 15
     rate: 3
   - waveName: Wave 5
-    enemyPrefab: {fileID: 538468389916142223, guid: 6efa3ef5aef474f43ad40a82cce50894, type: 3}
+    enemyPrefabs:
+    - {fileID: 538468389916142223, guid: 6efa3ef5aef474f43ad40a82cce50894, type: 3}
     count: 50
     rate: 5
   spawnPoint: {fileID: 3161938}
@@ -9916,6 +9942,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 866170718}
     m_Modifications:
+    - target: {fileID: 700989928106322787, guid: 488c652790b9c7340894ac92add37326, type: 3}
+      propertyPath: prefabName
+      value: MainBuilding
+      objectReference: {fileID: 0}
+    - target: {fileID: 1291393471212635092, guid: 488c652790b9c7340894ac92add37326, type: 3}
+      propertyPath: prefabName
+      value: MainBuilding
+      objectReference: {fileID: 0}
+    - target: {fileID: 4016414679680600628, guid: 488c652790b9c7340894ac92add37326, type: 3}
+      propertyPath: prefabName
+      value: MainBuilding
+      objectReference: {fileID: 0}
     - target: {fileID: 4261874695766456238, guid: 488c652790b9c7340894ac92add37326, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -9996,9 +10034,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4268905652450532957, guid: 488c652790b9c7340894ac92add37326, type: 3}
+      propertyPath: prefabName
+      value: MainBuilding
+      objectReference: {fileID: 0}
     - target: {fileID: 5782951188040216773, guid: 488c652790b9c7340894ac92add37326, type: 3}
       propertyPath: m_Name
       value: ShopPanel
+      objectReference: {fileID: 0}
+    - target: {fileID: 9192315976175425642, guid: 488c652790b9c7340894ac92add37326, type: 3}
+      propertyPath: prefabName
+      value: MainBuilding
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
