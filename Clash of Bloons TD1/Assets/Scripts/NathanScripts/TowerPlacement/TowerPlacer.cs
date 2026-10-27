@@ -32,6 +32,8 @@ public class TowerPlacer : MonoBehaviour
     private Camera mainCamera;
     private Tower preview;              // the tower following the mouse, or null
     private bool previewIsOnGround;     // false while the mouse is not over the ground
+    [SerializeField] private AudioClip placementSound;
+    [SerializeField] private AudioSource audioSource;
 
     /// <summary>True while a tower is following the mouse.</summary>
     public bool IsPlacing { get { return preview != null; } }
@@ -134,6 +136,14 @@ public class TowerPlacer : MonoBehaviour
         preview.Place();
         preview = null;
         LastPlacementFrame = Time.frameCount;
+        if (placementSound != null && audioSource != null)
+        {
+            audioSource.PlayOneShot(placementSound);
+        }
+        else if (placementSound != null)
+        {
+            AudioSource.PlayClipAtPoint(placementSound, transform.position);
+        }
     }
 
     private static void SetCollidersEnabled(GameObject root, bool isEnabled)
