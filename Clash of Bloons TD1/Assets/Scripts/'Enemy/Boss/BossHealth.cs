@@ -10,5 +10,7 @@ public class BossHealth : Health
         }
 
         base.Die();
+        Time.timeScale = 0f;
+
     }
 }
