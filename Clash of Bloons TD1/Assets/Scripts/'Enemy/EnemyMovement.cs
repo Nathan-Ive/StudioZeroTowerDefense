@@ -5,9 +5,9 @@ public class EnemyMovement : MonoBehaviour
 {
     public static readonly List<EnemyMovement> ActiveEnemies = new List<EnemyMovement>();
 
-    [Header("Waypoint Instellingen")]
+    [Header("Waypoint Settings")]
     public Transform[] waypoints;
-    public float speed = 5f;
+    protected float speed = 5f;
     public float rotationSpeed = 5f;
     private int currentWaypointIndex = 0;
     private bool hasReachedEnd = false;
@@ -28,12 +28,12 @@ public class EnemyMovement : MonoBehaviour
         ActiveEnemies.Remove(this);
     }
 
-    void Start()
+    protected virtual void Start()
     {
         damageScript = GetComponent<EnemyDamageScript>();
     }
 
-    void Update()
+    protected virtual void Update()
     {
         if (hasReachedEnd || waypoints.Length == 0) return;
 

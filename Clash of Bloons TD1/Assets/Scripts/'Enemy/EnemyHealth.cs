@@ -19,7 +19,7 @@ public class Health : MonoBehaviour
     private float burnTimer = 0f;      // seconds of burning left
     private float burnTickTimer = 0f;  // seconds until the next burn damage
 
-    void Start()
+   protected virtual void Start()
     {
         currentHealth = maxHealth;
     }
@@ -89,7 +89,7 @@ public class Health : MonoBehaviour
         burnTimer = Mathf.Max(burnTimer, duration);
     }
 
-    void Die()
+    protected virtual void Die()
     {
         isDead = true;
         Debug.Log(gameObject.name + " Has Died.");
