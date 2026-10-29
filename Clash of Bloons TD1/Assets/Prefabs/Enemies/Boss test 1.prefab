@@ -140,11 +140,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8756e642a80ac247bb3c690639f4651, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 1
+  maxHealth: 1000
   enableRegen: 0
   regenRate: 5
   testDamageAmount: 10
-  winUiPanel: {fileID: 7873075778584440527, guid: 05bb6467b5034bd4598a5d15533c0dad, type: 3}
 --- !u!114 &1148015987720105889
 MonoBehaviour:
   m_ObjectHideFlags: 0
