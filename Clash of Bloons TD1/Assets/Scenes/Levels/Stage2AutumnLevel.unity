@@ -10036,7 +10036,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4268905652450532957, guid: 488c652790b9c7340894ac92add37326, type: 3}
       propertyPath: prefabName
-      value: Bank
+      value: BankBuilding
       objectReference: {fileID: 0}
     - target: {fileID: 5782951188040216773, guid: 488c652790b9c7340894ac92add37326, type: 3}
       propertyPath: m_Name
