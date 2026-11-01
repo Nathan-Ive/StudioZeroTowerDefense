@@ -180,7 +180,7 @@ MonoBehaviour:
   - {fileID: 0}
   rotationSpeed: 5
   baseSpeed: 5
-  maxSpeed: 8
+  maxSpeed: 100
   initialTotalDistance: 21
 --- !u!114 &-3904798997018700254
 MonoBehaviour:
