@@ -180,8 +180,8 @@ MonoBehaviour:
   - {fileID: 0}
   rotationSpeed: 5
   baseSpeed: 5
-  maxSpeed: 100
-  initialTotalDistance: 21
+  maxSpeed: 10
+  initialTotalDistance: 10
 --- !u!114 &-3904798997018700254
 MonoBehaviour:
   m_ObjectHideFlags: 0
